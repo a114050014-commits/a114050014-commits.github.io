@@ -91,27 +91,17 @@
   }
 }
 
-/* --- 合併並整理 body（原本有兩處 body 規則，已合併成一處） */
 body {
   margin: 0;
-  padding-top: 3.375rem; /* default padding for small screens (kept from original) */
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: #6c757d; /* 使用模板較淡的文字色（原下方 body 設定） */
+  color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-/* 保留原本在檔案下方的 media 行為，已移到此處以集中管理 */
-@media (min-width: 992px) {
-  body {
-    padding-top: 0;
-    padding-left: 17rem;
-  }
 }
 
 hr {

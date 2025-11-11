@@ -1,41 +1,195 @@
 <!DOCTYPE html>
-<html lang="zh-hant">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - Start Bootstrap Theme</title>
+        <title>楊承翰 (凜月LinYua) 履歷</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- !! 新增思源黑體，改善中文顯示 -->
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-        <!-- 自訂覆蓋樣式（一定要放在 styles.css 後面） -->
         <link href="css/mystyles.css" rel="stylesheet" />
+        <!-- 新增：全頁排版間距調整，讓各區塊不會太擠 -->
+        <style>
+        /* 全域 box-sizing 預防元素超出寬度 */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* 防止整頁左右捲動 */
+        html, body { overflow-x: hidden; }
+
+        /* 科技感色票與間距變數 */
+        :root{
+          --accent: #00d1ff;
+          --accent-2: #6f4eff;
+          --bg-dark: #07080c;
+          --panel-bg: #0f1720;
+          --muted: #9fb0c8;
+          --text: #e6f7ff;
+          --side-width: 260px;
+
+          --content-max-width: 980px;
+          --section-vertical: 64px;
+          --content-padding: 28px;
+        }
+
+        /* 背景與字色 */
+        body{
+          background: linear-gradient(180deg, var(--bg-dark) 0%, #071021 100%);
+          color: var(--text);
+          font-family: "Muli", "Helvetica Neue", Arial, sans-serif;
+          line-height: 1.65;
+        }
+
+        /* 連結與強調色 */
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-2); text-decoration: underline; }
+        .text-primary { color: var(--accent) !important; }
+
+        /* 側邊導覽與 navbar */
+        #sideNav,
+        .navbar.navbar-dark,
+        .bg-primary {
+          background: linear-gradient(180deg, #04060a 0%, var(--panel-bg) 100%) !important;
+          border-right: 1px solid rgba(255,255,255,0.04);
+        }
+        #sideNav .nav-link { color: rgba(230,247,255,0.9); }
+        #sideNav .nav-link:hover { color: var(--accent); }
+
+        /* 區塊底色與間距 */
+        .resume-section { padding: var(--section-vertical) 0; }
+        .resume-section-content {
+          max-width: var(--content-max-width);
+          margin: 0;
+          padding: var(--content-padding);
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        }
+
+        /* 標題樣式 */
+        .resume-section h1, .resume-section h2 { margin-bottom: 20px; color: var(--text); }
+        .resume-section h1 .text-primary { color: var(--accent); }
+        .resume-section h3 { margin-top: 18px; margin-bottom: 10px; color: #cfefff; }
+
+        /* 文字與清單 */
+        .subheading { color: var(--muted); margin-bottom: 16px; }
+        .resume-section p, .resume-section li { color: #cfe7f4; font-size:16px; margin-bottom:12px; }
+        ul { padding-left: 1.25rem; }
+
+        /* 社群圖示與 icon 效果 */
+        .social-icons .social-icon i,
+        .dev-icons i,
+        .fa-li i,
+        .fab,
+        .fas {
+          color: var(--accent);
+          transition: color .2s ease;
+        }
+        .social-icons .social-icon:hover i { color: var(--accent-2); }
+
+        /* 分隔線 */
+        hr.m-0 { border-color: rgba(255,255,255,0.06); }
+
+        /* 按鈕（若有）*/
+        .btn, .btn-primary {
+          background: linear-gradient(90deg, var(--accent), var(--accent-2)) !important;
+          color: #041020 !important;
+          border: none;
+          box-shadow: 0 6px 18px rgba(0,209,255,0.08);
+        }
+
+        /* 圖片自適應避免溢出 */
+        img, .img-fluid { max-width: 100%; height: auto; display: block; }
+
+        /* 防止內容溢出 */
+        .resume-section-content, .resume-section-content * { word-wrap: break-word; word-break: break-word; }
+
+        /* 版面間距與響應式（保留避免左右滾動設定） */
+        .container-fluid.p-0 { padding-top: 96px; padding-bottom: 48px; box-sizing: border-box; }
+
+        /* 桌面 */
+        @media (min-width: 992px) {
+          #sideNav { width: var(--side-width); }
+          .container-fluid.p-0 {
+            margin-left: var(--side-width);
+            width: calc(100% - var(--side-width));
+            overflow-x: hidden;
+          }
+          .resume-section-content { margin-left: 0; }
+        }
+
+        /* 手機 */
+        @media (max-width: 991.98px) {
+          .resume-section-content { padding-left: 20px; padding-right: 20px; }
+          .container-fluid.p-0 { padding-top: 70px; }
+        }
+
+        /* ===== 調整：Experience 區塊較緊湊的排版覆寫 ===== */
+        .resume-section#experience {
+          /* 比預設區塊小一點的上下間距 */
+          padding-top: 28px;
+          padding-bottom: 28px;
+        }
+        .resume-section#experience .resume-section-content {
+          /* 內容內距較小，讓文字緊湊但仍保有可讀性 */
+          padding-top: 12px;
+          padding-bottom: 12px;
+          padding-left: 18px;
+          padding-right: 18px;
+          max-width: 920px; /* 稍微縮窄以配合緊湊感 */
+        }
+
+        .resume-section#experience h2.mb-5 {
+          margin-bottom: 14px; /* 主標題下方空間縮小 */
+        }
+        .resume-section#experience h3 {
+          margin-top: 8px;
+          margin-bottom: 6px;
+          font-size: 1.02rem;
+        }
+        .resume-section#experience .mb-4 {
+          margin-bottom: 8px !important;
+        }
+        .resume-section#experience p,
+        .resume-section#experience li {
+          margin-bottom: 8px;
+          font-size: 15px;
+          line-height: 1.5;
+        }
+
+        /* 小螢幕維持可讀但稍微緊湊 */
+        @media (max-width: 991.98px) {
+          .resume-section#experience .resume-section-content {
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+          .resume-section#experience h3 { margin-top: 6px; margin-bottom: 6px; }
+          .resume-section#experience p, .resume-section#experience li { font-size: 15px; margin-bottom: 8px; }
+        }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">楊承翰 Chang-Han Yang</span>
+                <span class="d-block d-lg-none">楊承翰 (凜月LinYua)</span>
                 <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#about">關於我</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#experience">個人經驗</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#education">教育背景</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#skills">技能</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#partners">合作廠商</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#interests">興趣</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger ripple-btn" href="#awards">獎項</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">經歷</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">教育程度</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">技能</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">自我反思</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">獎項</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,20 +198,31 @@
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
-                    <h1 class="mb-0>
+                    <!-- 修正：加入缺少的引號 -->
+                    <h1 class="mb-0">
                         楊承翰
-                        <span class="text-primary">Chang-Han Yang</span>
+                        <span class="text-primary">CHANG-HAN YANG</span>
                     </h1>
                     <div class="subheading mb-5">
-                        臺北市文山區木柵路一段17巷1號 · 02 2236 8225 ·
-                        <a class="mail-link" href="mailto:A114050014@mail.shu.edu.tw">A114050014@mail.shu.edu.tw</a>
+                        YouTuber – 凜月LinYua · 頻道訂閱人數：約 6400 位 ·
+                        <a href="mailto:A114050014@mail.shu.edu.tw">A114050014@mail.shu.edu.tw</a>
                     </div>
-                    <p class="lead mb-5">我擅長利用敏捷框架提供高層次的概述。迭代的方法促進了協作思維，進一步提升整體價值主張。</p>
+
+                    <p class="lead mb-2"><strong>基本資訊與信念</strong></p>
+                    <p class="mb-2">個人識別：楊承翰（凜月LinYua）。目前為 YouTuber (KOL)。</p>
+                    <p class="mb-2">頻道經營自 2019-12-07 起，實戰經驗約五至六年，訂閱數約 6,400 人。</p>
+                    <p class="mb-3">核心信念：Every creation, my masterpiece.</p>
+
+                    <h3 class="mb-2">個人簡介</h3>
+                    <p class="mb-2">來自台南市，現居善化；目前就讀麻豆區黎明高級中學。</p>
+                    <p class="mb-2">MBTI：ENFJ‑A（主人公）。擁有良好社交與領導能力，對喜愛的事物充滿熱情並勇往直前。</p>
+                    <p class="mb-2">啟發來源：小學六年級時受到阿神（百萬遊戲 YouTuber）影響，立志成為能帶給觀眾歡樂與影響力的創作者，這份初衷至今未變。</p>
+                    <p class="mb-2">經歷簡述：過去五年曾經營兩個頻道，放下初頻道後重新啟動並持續耕耘；從遊戲實況拓展至科技評測，持續探索與成長。</p>
+                    <p class="mb-3">興趣與目標：喜歡用相機與剪輯製作酷炫視覺影片；已與 ASUS ROG、Logitech、Razer 等科技大廠合作。期望成為具影響力的 YouTuber 與自媒體講師，將經驗分享給更多創作者。</p>
+
                     <div class="social-icons">
-                        <a class="social-icon ripple-btn" data-ripple-color="rgba(255,255,255,0.75)" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon ripple-btn" data-ripple-color="rgba(255,255,255,0.75)" href="#!"><i class="fab fa-github"></i></a>
-                        <a class="social-icon ripple-btn" data-ripple-color="rgba(255,255,255,0.75)" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon ripple-btn" data-ripple-color="rgba(255,255,255,0.75)" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon" href="https://www.instagram.com/lyn_linyua_life?igsh=MXI0YTY0YTNyNXM0Zw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="social-icon" href="https://www.youtube.com/@LYN_LinYua" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </section>
@@ -65,38 +230,30 @@
             <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">個人經驗</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">高級網頁開發者</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>帶來雙贏的生存策略，以確保主動的支配地位。在一天結束時，向前邁進，從 X 世代演變而來的新常態正朝著精簡的雲解決方案跑道前進。用戶生成的內容將實時擁有多個外包接觸點。</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2013 年 3 月 - 現在</span></div>
+                    <h2 class="mb-5">經歷</h2>
+
+                    <h3 class="mb-3">學生身分 (Student)</h3>
+                    <div class="mb-4">
+                        <p>高中在校期間積極參與校內專案與各類競賽，包含代表學校於臺南三區「112 學年度協作共好計畫自主學習聯合成果發表」，發表主題為「YouTube 影片縮圖設計學習」。</p>
+                        <p>曾以學生身分參加「遇見台南・府城400」新聞影音報導競賽（113 年 4 月），作品名稱／主題：「府城400·教育善化—沈光文」，最終榮獲貳獎。本人於該專案中負責採訪與腳本撰寫、影片拍攝與剪輯、後製（包含色彩、字幕與音頻處理）以及縮圖設計，並協助整理報導素材與聯繫受訪對象。</p>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">網頁開發者</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>利用低懸果識別出一個大致的增值活動進行測試。通過 DevOps 額外的點擊率來克服數字鴻溝。納米技術的沉浸式體驗將關注點從單一的底線轉向全面的解決方案。</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2011 年 12 月 - 2013 年 3 月</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">初級網頁設計師</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>在工作流程中播客操作變更管理，以建立框架。將無縫的關鍵績效指標離線，以最大化長尾效應。在進行深度挖掘以啟動心態時，始終關注球賽，以實現跨平台集成的融合。</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2010 年 7 月 - 2011 年 12 月</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">網頁設計實習生</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>通過即插即用的網絡管理賦予市場動力。安裝基礎利益後，動態地拖延 B2C 用戶。大幅度地將客戶導向的融合可視化，而無需革命性的投資回報率。</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2008 年 9 月 - 2010 年 6 月</span></div>
+
+                    <h3 class="mb-3">YouTuber / KOL 經驗 (凜月LinYua)</h3>
+                    <div>
+                        <p>以創作者身分從事頻道經營、內容製作、品牌合作與活動採訪；曾以媒體記者身分參與 2024 與 2025 年 COMPUTEX 台北國際電腦展。合作或專案展示包含下列廠商：</p>
+                        <ul>
+                            <li>ASUS | Republic of Gamers（華碩）</li>
+                            <li>Razer（雷蛇）</li>
+                            <li>Logitech G（羅技）</li>
+                            <li>ACER | Predator（宏碁）</li>
+                            <li>Ducky</li>
+                            <li>Mistel</li>
+                            <li>Gravastar（重力星）</li>
+                            <li>Wooting</li>
+                            <li>Glorious</li>
+                            <li>BenQ（明基）</li>
+                        </ul>
+                        <p>合作型態涵蓋產品評測、品牌形象內容、活動採訪與社群宣傳，部分作品曾於廠商官方平台展示。</p>
                     </div>
                 </div>
             </section>
@@ -104,23 +261,26 @@
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">教育背景</h2>
+                    <h2 class="mb-5">教育程度 & 語言能力</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">科羅拉多大學博爾德分校</h3>
-                            <div class="subheading mb-3">理學士</div>
-                            <div>計算機科學 - 網頁開發專業</div>
-                            <p>平均績點：3.23</p>
+                            <h3 class="mb-0">就學紀錄</h3>
+                            <div class="subheading mb-3">學校與就讀期間</div>
+                            <ul class="mb-3">
+                                <li>台南市黎明國中 — 2019年9月 到 2022年6月</li>
+                                <li>台南市黎明高級中學 — 2022年9月 到 2025年6月</li>
+                                <li>台北市私立世新大學 公共關係暨廣告學系 — 2025年9月 起（在學）</li>
+                            </ul>
+
+                            <h3 class="mb-0">語言能力</h3>
+                            <div class="subheading mb-3">TOEIC (L&R)</div>
+                            <div>成績：560 分（相當於 GEPT 中級）</div>
+                            <p class="mb-3">曾於 2023 年參與黎明中學的英國中學入班體驗暨法比荷文化探索旅遊學活動。</p>
+
+                            <h3 class="mb-0">校園學習經歷</h3>
+                            <div class="subheading mb-3">校園專案</div>
+                            <div>代表學校參加臺南三區「112 學年度協作共好計畫自主學習聯合成果發表」，發表主題為「YouTube 影片縮圖設計學習」。</div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2006 年 8 月 - 2010 年 5 月</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">詹姆斯·布坎南高中</h3>
-                            <div class="subheading mb-3">技術磁鐵計劃</div>
-                            <p>平均績點：3.56</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2002 年 8 月 - 2006 年 5 月</span></div>
                     </div>
                 </div>
             </section>
@@ -128,138 +288,60 @@
             <!-- Skills-->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">技能</h2>
-                    <div class="subheading mb-3">程式語言與工具</div>
-                    <ul class="list-inline dev-icons">
-                        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-angular"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-react"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-sass"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-less"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-npm"></i></li>
+                    <h2 class="mb-5">核心能力與媒體實戰經驗</h2>
+                    <div class="subheading mb-3">軟體技能 (Software Capabilities)</div>
+                    <ul class="mb-4">
+                        <li>影片剪輯：熟練使用 Adobe Premiere Pro（基礎剪輯、特效包與音效包應用），並能操作自動 AI 配對字幕功能。</li>
+                        <li>縮圖設計：熟練 Adobe Photoshop 基礎功能與混合選項應用，能設計吸睛縮圖。</li>
+                        <li>音訊處理：熟練使用 Adobe Audition 進行降噪與調音。</li>
                     </ul>
-                    <div class="subheading mb-3">工作流程</div>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            移動優先，響應式設計
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            跨瀏覽器測試與除錯
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            跨功能團隊合作
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            敏捷開發與 Scrum
-                        </li>
+                    <div class="subheading mb-3">內容創作與經營成就 (Content Creation Experience)</div>
+                    <ul class="mb-0">
+                        <li>自媒體經營自 2019-12-07 起，至今有約五至六年實戰經驗，頻道訂閱約 6,400 人。</li>
+                        <li>媒體記者身份：曾以媒體記者身分參與 2024 與 2025 年 COMPUTEX 台北國際電腦展。</li>
+                        <li>品牌合作：曾與 Razer 雷蛇 進行品牌形象合作並於官方粉專展示。</li>
+                        <li>合作廠商經歷：合作廠牌含 ASUS | Republic of Gamers、Razer、Logitech G、ACER | Predator、Ducky、Mistel、Gravastar、Wooting、Glorious 等。</li>
                     </ul>
                 </div>
             </section>
             <hr class="m-0" />
-            <!-- Partners-->
-            <section class="resume-section" id="partners">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">合作廠商</h2>
-                    <!-- Logo grid: 把 logo 放到 assets/img/，檔名如 partner-asus.png 等 -->
-                    <div class="partners-logos mb-4" aria-label="合作廠商 Logo 列表">
-                        <a class="partner-logo" href="#!" aria-label="華碩 ASUS"><img src="assets/img/partner-asus.png" alt="ASUS logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="ROG"><img src="assets/img/partner-rog.png" alt="ROG logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="TUF Gaming"><img src="assets/img/partner-tuf.png" alt="TUF Gaming logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="雷蛇 Razer"><img src="assets/img/partner-razer.png" alt="Razer logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="羅技 Logitech G"><img src="assets/img/partner-logitechg.png" alt="Logitech G logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="BenQ"><img src="assets/img/partner-benq.png" alt="BenQ logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="Dezctop"><img src="assets/img/partner-dezctop.png" alt="Dezctop logo" /></a>
-                        <a class="partner-logo" href="#!" aria-label="Raymii 瑞米"><img src="assets/img/partner-raymii.png" alt="Raymii logo" /></a>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <ul class="list-unstyled">
-                            <li class="mb-4">
-                                <h3 class="mb-1">華碩 ASUS</h3>
-                                <div class="subheading mb-2">旗下品牌：ROG、TUF Gaming</div>
-                                <p class="mb-0">合作類型：產品展示網站、行銷活動頁面、UI 優化與效能調校。與 ROG/TUF 進行聯名活動前端開發與互動設計。</p>
-                            </li>
-                            <li class="mb-4">
-                                <h3 class="mb-1">雷蛇 Razer</h3>
-                                <div class="subheading mb-2">合作類型：品牌活動 / 電商介面</div>
-                                <p class="mb-0">負責活動頁面切版、動效整合與跨裝置測試，並協助整合第三方支付與追蹤工具。</p>
-                            </li>
-                            <li class="mb-4">
-                                <h3 class="mb-1">羅技 Logitech G</h3>
-                                <div class="subheading mb-2">合作類型：產品頁 / 使用者體驗改善</div>
-                                <p class="mb-0">協助建立互動式產品展示、比較表格與多媒體整合，提升產品頁轉換率與可用性。</p>
-                            </li>
-                            <li class="mb-4">
-                                <h3 class="mb-1">BenQ</h3>
-                                <div class="subheading mb-2">合作類型：企業網站 / 產品行銷</div>
-                                <p class="mb-0">承接官網子頁與產品專區開發，優化圖片載入與多語系支援，改善跨地域使用者體驗。</p>
-                            </li>
-                            <li class="mb-4">
-                                <h3 class="mb-1">Dezctop</h3>
-                                <div class="subheading mb-2">合作類型：專案委外 / 前端實作</div>
-                                <p class="mb-0">作為技術外包夥伴，負責前端開發、元件化重構與持續整合部署流程（CI/CD）。</p>
-                            </li>
-                            <li class="mb-4">
-                                <h3 class="mb-1">Raymii 瑞米</h3>
-                                <div class="subheading mb-2">合作類型：網站建置 / 技術顧問</div>
-                                <p class="mb-0">協助中小型專案之網站建置、性能優化與後續維運，並提供前端技術諮詢。</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Interests-->
+            <!-- Reflection / Growth Strategy (替代原 Interests 區塊)-->
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">興趣</h2>
-                    <p>除了網頁開發，我喜歡大部分時間待在戶外。冬天，我是個狂熱的滑雪者和新手冰攀登者。在科羅拉多州的暖和月份，我喜歡山地自行車、自由攀岩和皮划艇。</p>
-                    <p class="mb-0">當被迫待在室內時，我會追隨許多科幻和奇幻類型的電影和電視節目，我是一名有抱負的廚師，並且我會花大量的空閒時間探索前端網頁開發領域最新的技術進展。</p>
+                    <h2 class="mb-5">自我反思與未來成長策略</h2>
+                    <p>楊承翰對頻道成長挑戰進行策略性分析，並規劃具體提升路徑：</p>
+                    <h3>A. 縮圖獨特性不足</h3>
+                    <ul>
+                        <li>現狀問題：作品風格與多數創作者相似，缺乏代表性。</li>
+                        <li>改進方案：修習影視製作、數位影像設計、創意與設計課程，提升創新設計能力，運用色彩與光影強化視覺效果，實踐「獨樹一格」縮圖風格。</li>
+                    </ul>
+                    <h3>B. 觀眾互動率不足</h3>
+                    <ul>
+                        <li>現狀問題：頻道缺少足夠留言互動與反饋。</li>
+                        <li>改進方案：修習傳播與數據分析課程，研究後台流量來源，創造深度內容並在影片中留下討論議題以促進互動。</li>
+                    </ul>
+                    <h3>C. 品牌合作深度不足</h3>
+                    <ul>
+                        <li>現狀問題：缺乏長期合作策略。</li>
+                        <li>改進方案：整合行銷傳播與媒體管理課程，學習提出長期且符合廠商需求的合作方案；參與 ASUS 校園大使計畫以了解業界實務。</li>
+                    </ul>
                 </div>
             </section>
             <hr class="m-0" />
             <!-- Awards-->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">獎項與證書</h2>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            Google Analytics 認證開發者
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            行動網頁專家 - Google 認證
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            科羅拉多大學博爾德分校 - 新興技術競賽 2009 年 第 1 名
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            科羅拉多大學博爾德分校 - Adobe Creative Jam 2008 年 第 1 名 (UI 設計類別)
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            科羅拉多大學博爾德分校 - 新興技術競賽 2008 年 第 2 名
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            詹姆斯·布坎南高中 - 黑客松 2006 年 第 1 名
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            詹姆斯·布坎南高中 - 黑客松 2005 年 第 3 名
-                        </li>
+                    <h2 class="mb-5">競賽獲獎紀錄與證照</h2>
+                    <ul class="mb-0">
+                        <li>◆ 全國高中職自媒體競賽：113 年 7 月 — YouTube 頻道組 第一名</li>
+                        <li>◆ 全國高中職自媒體競賽：112 年 6 月 — Cougar 遊戲組 第三名</li>
+                        <li>◆ 全國高級中等學校閱讀心得寫作比賽：113 年 5 月、112 年 12 月 — 兩次獲得二級優等</li>
+                        <li>◆ 全民 e 化資訊運動會：英打全國 第三名（速度 47.28 字/分）；並取得電腦應用專案技能認證等級 C（44.14 字/分）</li>
+                        <li>◆ 「遇見台南・府城400」新聞影音報導競賽（113 年 4 月） — 貳獎（府城400 · 教育善化—沈光文）</li>
+                        <li>◆ 遠哲科學趣味競賽：南區賽 大會獎 第二名 與科技創意獎；全國總錦標 大會獎 第四名 與探究獎 第三名</li>
+                        <li>◆ 善化慶安宮攝影比賽：第二名</li>
+                        <li>◆ 市長科技獎：111 年 6 月 — 由黃偉哲市長頒發</li>
+                        <li>◆ 世新大學新聞傳播學院「菸害防制圖像設計比賽」：銀獎</li>
                     </ul>
                 </div>
             </section>
@@ -268,7 +350,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- 自訂互動腳本（放在 templates 的腳本之後以便覆蓋或搭配使用） -->
-        <script src="js/myscripts.js"></script>
     </body>
 </html>
